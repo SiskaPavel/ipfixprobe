@@ -31,8 +31,6 @@ jobs:
 
   check:
     runs-on: ubuntu-latest
-    container:
-      image: docker_image:ol9
     needs: docker-image-ol9
     steps:
       - name: Download artifact
