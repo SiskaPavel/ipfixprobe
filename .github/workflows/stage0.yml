@@ -11,8 +11,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build $DOCKER_OPTS -t docker_image:ol9 --build-arg OS_DISTRO=oraclelinux --build-arg OS_RELEASE=9 -f docker/Dockerfile .
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Build and export
+      uses: docker/build-push-action@v5
+      with:
+          file: docker/Dockerfile
+          build-args: 
+            OS_DISTRO=oraclelinux
+            OS_RELEASE=9
+          context: .
+          tags: docker_image:ol9
+          outputs: type=docker,dest=/tmp/docker_image.tar
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+          name: docker_image
+          path: /tmp/docker_image.tar
 
   check:
     runs-on: ubuntu-latest
@@ -20,5 +35,14 @@ jobs:
       image: docker_image:ol9
     needs: docker-image-ol9
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: docker_image
+          path: /tmp
+      - name: Load image
+        run: |
+          docker load --input /tmp/myimage.tar
+          docker image ls -a    
       - name: Check clang-format
         run: find . -type f -regex '.*\\.\\(hpp\\|cpp\\)$' -print0 | xargs -0 clang-format --dry-run --Werror --style=file"
