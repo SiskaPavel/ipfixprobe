@@ -1,11 +1,18 @@
 name: check
 on:
-  workflow_run:
-    workflows: ["prepare"]
-    types:
-      - completed
+  push:
+    branches: '*'
+  pull_request:
+    branches: '*'
+#on:
+#  workflow_run:
+#    workflows: ["prepare"]
+#    types:
+#      - completed
 jobs:
   container-check:
+    uses: ./.github/workflows/prepare.yml
+    secrets: inherit
     runs-on: ubuntu-latest
     container:
       image: docker_image:ol9
