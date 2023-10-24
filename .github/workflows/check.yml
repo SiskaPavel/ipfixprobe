@@ -1,0 +1,13 @@
+name: check
+on:
+  push:
+    branches: '*'
+jobs:
+  container-check:
+    runs-on: ubuntu-latest
+    needs: docker-image-ol9
+    container:
+      image: docker_image:ol9
+    steps:
+      - name: Check clang-format
+        run: find . -type f -regex '.*\\.\\(hpp\\|cpp\\)$' -print0 | xargs -0 clang-format --dry-run --Werror --style=file"
