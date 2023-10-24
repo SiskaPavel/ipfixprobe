@@ -37,7 +37,7 @@ jobs:
             OS_DISTRO=oraclelinux
             OS_RELEASE=9
         push: true
-        tags: ghcr.io/SiskaPavel/docker_image:ol9
+        tags: ghcr.io/siskapavel/docker_image:ol9
                   
   test_stage:
       runs-on: ubuntu-latest
