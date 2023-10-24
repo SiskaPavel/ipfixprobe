@@ -1,0 +1,15 @@
+name: docker stage
+
+on:
+  push:
+    branches: '*'
+  pull_request:
+    branches: '*'
+
+jobs:
+  docker-image-ol9: 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build $DOCKER_OPTS -t docker_image:ol9 --build-arg OS_DISTRO=oraclelinux --build-arg OS_RELEASE=9 -f docker/Dockerfile .
