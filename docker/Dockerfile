@@ -11,6 +11,8 @@ RUN <<EOF
 	python3 -m pip install --upgrade pip
 	python3 -m pip install --upgrade ansible
 
+    ansible-playbook ansible/ci_docker.yaml
+
 	dnf clean all
 	rm -rf /var/cache/dnf/
 EOF
