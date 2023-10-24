@@ -1,7 +1,10 @@
 name: check
 on:
-  push:
-    branches: '*'
+  workflow_run:
+    workflows: ["Prepare Docker Images"]
+    branches:  '*'
+    types: 
+      - completed
 jobs:
   container-check:
     runs-on: ubuntu-latest
