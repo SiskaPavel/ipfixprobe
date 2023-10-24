@@ -12,16 +12,16 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build $DOCKER_OPTS -t $DOCKER_IMAGE:ol8 --build-arg OS_DISTRO=oraclelinux --build-arg OS_RELEASE=8 -f docker/Dockerfile .
+      run: docker build $DOCKER_OPTS -t DOCKER_IMAGE:ol8 --build-arg OS_DISTRO=oraclelinux --build-arg OS_RELEASE=8 -f docker/Dockerfile .
   job2:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build $DOCKER_OPTS -t $DOCKER_IMAGE:ol9 --build-arg OS_DISTRO=oraclelinux --build-arg OS_RELEASE=9 -f docker/Dockerfile .
+      run: docker build $DOCKER_OPTS -t DOCKER_IMAGE:ol9 --build-arg OS_DISTRO=oraclelinux --build-arg OS_RELEASE=9 -f docker/Dockerfile .
   job3:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build $DOCKER_OPTS -t $DOCKER_IMAGE:rl9 --build-arg OS_DISTRO=rockylinux --build-arg OS_RELEASE=9 -f docker/Dockerfile .
+      run: docker build $DOCKER_OPTS -t DOCKER_IMAGE:rl9 --build-arg OS_DISTRO=rockylinux --build-arg OS_RELEASE=9 -f docker/Dockerfile .
