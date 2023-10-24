@@ -1,0 +1,12 @@
+name: stage 1
+
+on:
+  workflow_run:
+    workflows: ["docker stage"]
+    types: [completed] #requested
+
+jobs:
+  on-success:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "First workflow was a success"
