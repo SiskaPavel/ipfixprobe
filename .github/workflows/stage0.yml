@@ -20,7 +20,7 @@ jobs:
       with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.DOCKER_LOGIN }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Extract metadata (tags, labels) for Docker
       id: meta
@@ -29,7 +29,7 @@ jobs:
         images: ghcr.io/docker_image:ol9
 
     - name: Build and push Docker image
-      uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+      uses: docker/build-push-action@v5
       with:
         context: .
         file: docker/Dockerfile
@@ -37,8 +37,7 @@ jobs:
             OS_DISTRO=oraclelinux
             OS_RELEASE=9
         push: true
-        tags: docker_image:ol9
-        labels: ${{ steps.meta.outputs.labels }}
+        tags: ghcr.io/SiskaPavel/docker_image:ol9
                   
   test_stage:
       runs-on: ubuntu-latest
