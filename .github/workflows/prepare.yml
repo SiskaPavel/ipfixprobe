@@ -1,4 +1,4 @@
-name: Prepare Docker Images
+name: prepare
 
 on:
   push:
