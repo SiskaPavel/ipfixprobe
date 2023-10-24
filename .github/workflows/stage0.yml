@@ -17,7 +17,7 @@ jobs:
       uses: docker/build-push-action@v5
       with:
           file: docker/Dockerfile
-          build-args: 
+          build-args: |
             OS_DISTRO=oraclelinux
             OS_RELEASE=9
           context: .
