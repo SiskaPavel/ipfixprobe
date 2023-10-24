@@ -14,23 +14,23 @@ jobs:
     - name: Build the Docker image
       run: docker build $DOCKER_OPTS -t docker_image:ol9 --build-arg OS_DISTRO=oraclelinux --build-arg OS_RELEASE=9 -f docker/Dockerfile .
 
-Comment: >
-  docker-image-ol8:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4      
-    - name: Build the Docker image
-      run: docker build $DOCKER_OPTS -t docker_image:ol8 --build-arg OS_DISTRO=oraclelinux --build-arg OS_RELEASE=8 -f docker/Dockerfile .
+#  docker-image-ol8:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: actions/checkout@v4      
+#    - name: Build the Docker image
+#      run: docker build $DOCKER_OPTS -t docker_image:ol8 --build-arg OS_DISTRO=oraclelinux --build-arg OS_RELEASE=8 -f docker/Dockerfile .
 
-  docker-image-rl8:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build $DOCKER_OPTS -t docker_image:rl9 --build-arg OS_DISTRO=rockylinux --build-arg OS_RELEASE=9 -f docker/Dockerfile .
-  docker-image-fedora40:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build $DOCKER_OPTS -t docker_image:fedora40 --build-arg OS_DISTRO=fedora --build-arg OS_RELEASE=40 -f docker/Dockerfile .
+#  docker-image-rl8:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: actions/checkout@v4
+#    - name: Build the Docker image
+#      run: docker build $DOCKER_OPTS -t docker_image:rl9 --build-arg OS_DISTRO=rockylinux --build-arg OS_RELEASE=9 -f docker/Dockerfile .
+
+#  docker-image-fedora40:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - uses: actions/checkout@v4
+#    - name: Build the Docker image
+#      run: docker build $DOCKER_OPTS -t docker_image:fedora40 --build-arg OS_DISTRO=fedora --build-arg OS_RELEASE=40 -f docker/Dockerfile .
