@@ -2,7 +2,8 @@ name: check
 on:
   workflow_run:
     workflows: [prepare]
-    types: [completed] #requested
+    types:
+      - completed
 #on:
 #  workflow_run:
 #    workflows: ["prepare"]
@@ -11,7 +12,6 @@ on:
 jobs:
   on-success:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     container:
       image: docker_image:ol9
     steps:
