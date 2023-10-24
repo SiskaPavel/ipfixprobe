@@ -5,6 +5,8 @@ ARG OS_RELEASE=8
 
 FROM $OS_DISTRO:$OS_RELEASE as default
 
+COPY ansible /ansible
+
 RUN <<EOF
 	dnf install -y python3 python3-pip
 
