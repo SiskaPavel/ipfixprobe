@@ -1,0 +1,19 @@
+---
+- name: libpcap library is installed
+  ansible.builtin.dnf:
+    name:
+      - libpcap
+      - libpcap-devel
+    state: latest
+
+- name: libunwind library is installed
+  ansible.builtin.dnf:
+    name:
+      - libunwind-devel
+    state: latest
+
+- name: openssl library is installed
+  ansible.builtin.dnf:
+    name:
+      - openssl-devel
+    state: latest

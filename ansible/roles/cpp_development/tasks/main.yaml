@@ -1,0 +1,24 @@
+---
+- name: Make/autoconf/libtool/rpmbuild is installed
+  ansible.builtin.dnf:
+    name:
+      - autoconf
+      - make
+      - libtool
+      - rpm-build
+    state: latest
+
+- name: GCC is installed
+  ansible.builtin.dnf:
+    name:
+      - gcc
+      - gcc-c++
+    state: latest
+
+- name: Static analysis tools are installed
+  ansible.builtin.dnf:
+    name:
+      - cppcheck
+      - clang-tools-extra
+    state: latest
+
