@@ -26,7 +26,7 @@ jobs:
       id: meta
       uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
       with:
-        images: ghcr.io/docker_image:ol9
+        images: ghcr.io/${{ github.actor }}/docker_image:ol9
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
@@ -37,7 +37,7 @@ jobs:
             OS_DISTRO=oraclelinux
             OS_RELEASE=9
         push: true
-        tags: ghcr.io/siskapavel/docker_image:ol9
+        tags: ghcr.io/${{ github.actor }}/docker_image:ol9
                   
   test_stage:
       runs-on: ubuntu-latest
