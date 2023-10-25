@@ -32,7 +32,7 @@ jobs:
         with:
             registry: ${{ env.REGISTRY }}
             username: ${{ github.actor }}
-            password: ${{ secrets.GITHUB_TOKEN }}
+            password: ${{ secrets.DOCKER_LOGIN }}
       - name: Extract metadata (tags, labels) for Docker
         run: |
           IFS=- read -r OS_NAME OS_TAG <<< ${{ matrix.os }}
