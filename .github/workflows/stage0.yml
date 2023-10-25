@@ -1,10 +1,8 @@
 name: prepare
 
-#env:
-#  REGISTRY: ghcr.io
-#  IMAGE_NAME: ${{ github.repository }}
-
-
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 
 
 on:
@@ -14,6 +12,17 @@ on:
     branches: '*'
 
 jobs:
+  example_matrix:
+    strategy:
+      matrix:
+        os: [oraclelinux:9, oraclelinux:8, rockylinux:8]
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-os: ${{ matrix.os }}
+
+
+
   docker-image-ol9: 
     runs-on: ubuntu-latest
     steps:
