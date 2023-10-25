@@ -17,10 +17,8 @@ jobs:
         os: [oraclelinux-9, oraclelinux-8, rockylinux-8]
     steps:
       - uses: actions/setup-node@v3
-        with:
-          image-os: ${{ matrix.os }}
       - name: IMAGE OS info
-        run: echo ${{ matrix.matrix.os }}
+        run: echo ${{ matrix.os }}
     runs-on: ubuntu-latest
          
   docker-image-ol9: 
