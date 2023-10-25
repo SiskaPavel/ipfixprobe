@@ -33,7 +33,7 @@ jobs:
           echo "${{ matrix.os }}_OS_TAG=$OS_TAG" >>${GITHUB_ENV}
       - name: env VALUE
         run: |
-          echo ${{ env[format('{0}', matrix.os)]_OS_NAME }}
+          echo ${{ env[format('{0}_OS_NAME', matrix.os)] }}
           
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
