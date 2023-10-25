@@ -45,7 +45,8 @@ jobs:
               OS_DISTRO=${{ env[format('{0}_OS_NAME', matrix.os)] }}
               OS_RELEASE=${{ env[format('{0}_OS_TAG', matrix.os)] }}
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.LC_ACTOR }}/${{ env[format('{0}_OS_NAME', matrix.os)] }}:${{ env[format('{0}_OS_TAG', matrix.os)] }}
+          tags: ghcr.io/siskapavel/${{ env[format('{0}_OS_NAME', matrix.os)] }}:${{ env[format('{0}_OS_TAG', matrix.os)] }}
+          #${{ env.REGISTRY }}/${{ env.LC_ACTOR }}/${{ env[format('{0}_OS_NAME', matrix.os)] }}:${{ env[format('{0}_OS_TAG', matrix.os)] }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
     runs-on: ubuntu-latest
