@@ -17,13 +17,15 @@ jobs:
   docker-image-ol9: 
     runs-on: ubuntu-latest
     steps:
-    - name: downcase REPO
+    - name: set lower case owner name
       run: |
-        echo "REPO=${github.actor,,}" >>${ACTOR}
+        echo "ACTOR_LC=${OWNER,,}" >>${GITHUB_ENV}
+      env:
+        OWNER: '${{ github.actor }}'
     - uses: actions/checkout@v4
     - name: basic info
       run: |
-        echo ${{ ENV.ACTOR }}
+        echo ${{ ENV.ACTOR_LC }}
         echo ${{ github.repository }}
         echo ${{ github.actor }}  
         echo ${{ steps.meta.outputs.tags }}
