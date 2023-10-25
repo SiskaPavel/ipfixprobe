@@ -26,14 +26,12 @@ jobs:
             registry: ${{ env.REGISTRY }}
             username: ${{ github.actor }}
             password: ${{ secrets.DOCKER_LOGIN }}
-      - id: ${{ matrix.os }}
-        run: echo "ok"
-        with:
-          OS_NAME: ${{ matrix.os }}
-
+      - name: Extract metadata (tags, labels) for Docker
+        run: |
+          echo "${{ matrix.os }}_OS_NAME=${{ matrix.os }}" >>${GITHUB_ENV}
       - name: env VALUE
         run: |
-          echo ${{ env.oraclelinux-9.OS_NAME }}
+          echo ${{ env.oraclelinux-9_OS_NAME }}
           
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
