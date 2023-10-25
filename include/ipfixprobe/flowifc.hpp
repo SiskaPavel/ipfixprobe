@@ -37,6 +37,7 @@
 #include <config.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <string>
 #include <sys/time.h>
 
 #ifdef WITH_NEMEA
