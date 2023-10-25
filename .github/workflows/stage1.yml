@@ -2,8 +2,9 @@ name: stage 1
 
 on:
   workflow_run:
-    workflows: ["prepare"]
-    types: [completed] #requested
+    workflows: [prepare]
+    types:
+      - completed
 
 jobs:
   on-success:
