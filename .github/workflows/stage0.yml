@@ -16,6 +16,11 @@ jobs:
       matrix:
         os: [oraclelinux-9, oraclelinux-8, rockylinux-8]
     steps:
+      - name: set lower case owner name
+        run: |
+          echo "ACTOR_LC=${OWNER,,}" >>${GITHUB_ENV}
+        env:
+          OWNER: '${{ github.actor }}'
       - name: IMAGE OS info
         run: echo ${{ matrix.os }}
       - name: Set up Docker Buildx
@@ -30,21 +35,17 @@ jobs:
         run: |
           IFS=- read -r OS_NAME OS_TAG <<< ${{ matrix.os }}
           echo "${{ matrix.os }}_OS_NAME=$OS_NAME" >>${GITHUB_ENV}
-          echo "${{ matrix.os }}_OS_TAG=$OS_TAG" >>${GITHUB_ENV}
-      - name: env VALUE
-        run: |
-          echo ${{ env[format('{0}_OS_NAME', matrix.os)] }}
-          
+          echo "${{ matrix.os }}_OS_TAG=$OS_TAG" >>${GITHUB_ENV}         
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           file: docker/Dockerfile
           build-args: |
-              OS_DISTRO=oraclelinux
-              OS_RELEASE=9
+              OS_DISTRO=${{ env[format('{0}_OS_NAME', matrix.os)] }}
+              OS_RELEASE=${{ env[format('{0}_OS_TAG', matrix.os)] }}
           push: true
-          tags: ghcr.io/siskapavel/oraclelinux:ol9
+          tags: ${{ env.REGISTRY }}/${{ env.LC_ACTOR }}/${{ env[format('{0}_OS_NAME', matrix.os)] }}:${{ env[format('{0}_OS_TAG', matrix.os)] }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
     runs-on: ubuntu-latest
