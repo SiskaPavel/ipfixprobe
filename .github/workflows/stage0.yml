@@ -20,7 +20,7 @@ jobs:
         with:
           image-os: ${{ matrix.os }}
       - name: IMAGE OS info
-        run: echo ${{ matrix.image-os }}
+        run: echo ${{ matrix.matrix.os }}
     runs-on: ubuntu-latest
          
   docker-image-ol9: 
