@@ -54,4 +54,4 @@ jobs:
       - name: files
         run: find .
       - name: Check clang-format
-        run: find . -type f -regex '.*\\.\\(hpp\\|cpp\\)$' -print0 | xargs -0 clang-format --dry-run --Werror --style=file
+        run: find . -type f -regextype posix-egrep -regex '.*.(hpp|cpp)$' -print0 | xargs -0 clang-format --dry-run --Werror --style=file
