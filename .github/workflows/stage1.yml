@@ -2,7 +2,7 @@ name: stage 1
 
 on:
   workflow_run:
-    workflows: ["docker stage"]
+    workflows: ["prepare"]
     types: [completed] #requested
 
 jobs:
