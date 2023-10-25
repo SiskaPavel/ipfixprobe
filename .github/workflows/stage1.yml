@@ -10,10 +10,9 @@ jobs:
   check:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-      runs-on: ubuntu-latest
-      container:
+    container:
         image: ghcr.io/siskapavel/oraclelinux:ol9
-      steps:
+    steps:
       - run: echo ${{ env.REGISTRY }}
       - uses: actions/checkout@v3
       - name: Check clang-format
