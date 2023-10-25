@@ -52,6 +52,6 @@ jobs:
       - name: ls
         run: ls
       - name: files
-        run: find . -type f -regex '.*\\.\\(hpp\\|cpp\\)$'
+        run: find .
       - name: Check clang-format
         run: find . -type f -regex '.*\\.\\(hpp\\|cpp\\)$' -print0 | xargs -0 clang-format --dry-run --Werror --style=file
