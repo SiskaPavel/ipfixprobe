@@ -49,5 +49,6 @@ jobs:
           push: true
           tags: ghcr.io/siskapavel/${{ env[format('{0}_OS_NAME', matrix.os)] }}:${{ env[format('{0}_OS_TAG', matrix.os)] }}
           #${{ env.REGISTRY }}/${{ env.LC_ACTOR }}/${{ env[format('{0}_OS_NAME', matrix.os)] }}:${{ env[format('{0}_OS_TAG', matrix.os)] }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          target: ${{ matrix.os }}
+          cache-from: type=gha,scope=build-${{ matrix.os }}
+          cache-to: type=gha,mode=max,scope=build-${{ matrix.os }}
