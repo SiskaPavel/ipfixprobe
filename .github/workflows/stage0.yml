@@ -28,10 +28,13 @@ jobs:
             password: ${{ secrets.DOCKER_LOGIN }}
       - name: Extract metadata (tags, labels) for Docker
         run: |
-          echo "${{ matrix.os }}_OS_NAME=${{ matrix.os }}" >>${GITHUB_ENV}
+          IFS=- read -r OS_NAME OS_TAG <<< ${{ matrix.os }}
+          echo "${{ matrix.os }}_OS_NAME=$OS_NAME" >>${GITHUB_ENV}
+          echo "${{ matrix.os }}_OS_TAG=$OS_TAG" >>${GITHUB_ENV}
       - name: env VALUE
         run: |
           echo ${{ env.oraclelinux-9_OS_NAME }}
+          echo ${{ env.oraclelinux-9_OS_TAG }}
           
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
