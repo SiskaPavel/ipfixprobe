@@ -17,6 +17,7 @@ jobs:
       matrix:
         os: [oraclelinux-9, oraclelinux-8, rockylinux-8]
     steps:
+      - uses: actions/checkout@v3
       - name: set lower case owner name
         run: |
           echo "ACTOR_LC=${OWNER,,}" >>${GITHUB_ENV}
