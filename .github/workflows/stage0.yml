@@ -65,6 +65,6 @@ jobs:
       - name: make
         run: make
       - name: make rpm
-        run: make-rpm
+        run: make rpm
 
 
