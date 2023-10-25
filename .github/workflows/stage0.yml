@@ -15,13 +15,11 @@ jobs:
   example_matrix:
     strategy:
       matrix:
-        os: [oraclelinux:9, oraclelinux:8, rockylinux:8]
+        version: [10, 12, 14]
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-os: ${{ matrix.os }}
-
-
+          node-version: ${{ matrix.version }}
 
   docker-image-ol9: 
     runs-on: ubuntu-latest
