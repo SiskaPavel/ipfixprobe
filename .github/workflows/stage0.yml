@@ -12,7 +12,9 @@ on:
     branches: '*'
 
 jobs:
+
   example_matrix:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         version: [10, 12, 14]
