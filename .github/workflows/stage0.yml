@@ -14,7 +14,7 @@ jobs:
   example_matrix:
     strategy:
       matrix:
-        os: [oraclelinux:9, oraclelinux:8, rockylinux:8]
+        os: [oraclelinux-9, oraclelinux-8, rockylinux-8]
     steps:
       - uses: actions/setup-node@v3
         with:
