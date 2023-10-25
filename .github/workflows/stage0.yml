@@ -4,7 +4,6 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
-
 on:
   push:
     branches: '*'
@@ -13,7 +12,6 @@ on:
 
 jobs:
   example_matrix:
-    runs-on: ubuntu-latest
     strategy:
       matrix:
         os: [oraclelinux:9, oraclelinux:8, rockylinux:8]
@@ -23,8 +21,8 @@ jobs:
           image-os: ${{ matrix.os }}
       - name: IMAGE OS info
         run: echo ${{ matrix.image-os }}
-      
-          
+    runs-on: ubuntu-latest
+         
   docker-image-ol9: 
     runs-on: ubuntu-latest
     steps:
