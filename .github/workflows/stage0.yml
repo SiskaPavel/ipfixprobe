@@ -11,12 +11,11 @@ on:
     branches: '*'
 
 jobs:
-  example_matrix:
+  build_docker_image:
     strategy:
       matrix:
         os: [oraclelinux-9, oraclelinux-8, rockylinux-8]
     steps:
-      - uses: actions/setup-node@v3
       - name: IMAGE OS info
         run: echo ${{ matrix.os }}
     runs-on: ubuntu-latest
