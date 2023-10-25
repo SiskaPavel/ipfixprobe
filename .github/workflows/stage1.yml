@@ -10,7 +10,6 @@ jobs:
   check:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    steps:
       runs-on: ubuntu-latest
       container:
         image: ghcr.io/siskapavel/oraclelinux:ol9
