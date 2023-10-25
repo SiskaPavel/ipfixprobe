@@ -6,6 +6,7 @@
       - make
       - libtool
       - rpm-build
+      - doxygen
     state: latest
 
 - name: GCC is installed
