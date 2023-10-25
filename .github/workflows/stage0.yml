@@ -28,6 +28,7 @@ jobs:
             password: ${{ secrets.DOCKER_LOGIN }}
       - name: Extract OS name and tag for Docker
         id: ${{ matrix.os }}
+        run: echo "et"
         env:
           OS_NAME: ${{ matrix.os }}
           OS_TAG: ${{ matrix.os }}
