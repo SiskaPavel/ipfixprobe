@@ -12,17 +12,19 @@ on:
     branches: '*'
 
 jobs:
-
   example_matrix:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: [10, 12, 14]
+        os: [oraclelinux:9, oraclelinux:8, rockylinux:8]
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.version }}
-
+          image-os: ${{ matrix.os }}
+      - name: IMAGE OS info
+        run: echo ${{ matrix.image-os }}
+      
+          
   docker-image-ol9: 
     runs-on: ubuntu-latest
     steps:
