@@ -45,7 +45,10 @@ jobs:
       container:
         image: ghcr.io/siskapavel/docker_image:ol9
       steps:
+      - uses: actions/checkout@v4
       - name: test
         run: cat /etc/os-release
+      - name: files
+        run: find . -type f -regex '.*\\.\\(hpp\\|cpp\\)$'
       - name: Check clang-format
         run: find . -type f -regex '.*\\.\\(hpp\\|cpp\\)$' -print0 | xargs -0 clang-format --dry-run --Werror --style=file
