@@ -28,8 +28,9 @@ jobs:
             password: ${{ secrets.DOCKER_LOGIN }}
       - name: Extract OS name and tag for Docker
         run: |
-          echo "${{ env.matrix.os }}"
-          echo "${{ env.matrix.os }}.NAME=TEST" >>${GITHUB_ENV}
+          echo "${{ matrix.os }}"
+          echo "${{ matrix.os }}.NAME=TEST" >>${GITHUB_ENV}
+          echo "${{ env.oraclelinux-9.NAME }}"
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
